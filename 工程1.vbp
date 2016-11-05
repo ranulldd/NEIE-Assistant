@@ -1,6 +1,6 @@
 Type=Exe
-Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#C:\Windows\SysWow64\stdole2.tlb#OLE Automation
-Reference=*\G{2A75196C-D9EB-4129-B803-931327F72D5C}#2.8#0#C:\Program Files (x86)\Common Files\System\ado\msado28.tlb#Microsoft ActiveX Data Objects 2.8 Library
+Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\WINDOWS\system32\stdole2.tlb#OLE Automation
+Reference=*\G{2A75196C-D9EB-4129-B803-931327F72D5C}#2.8#0#..\..\..\..\Program Files\Common Files\system\ado\msado15.dll#Microsoft ActiveX Data Objects 2.8 Library
 Form=Form1.frm
 Module=Module1; Module1.bas
 Form=Form2.frm
@@ -11,12 +11,11 @@ Startup="Form1"
 HelpFile=""
 Title="¹¤³Ì1"
 ExeName32="NEIE Assistant.exe"
-Path32="C:\Users\Administrator\Desktop"
 Command32=""
 Name="NEIE_Assistant"
 HelpContextID="0"
 CompatibleMode="0"
-MajorVer=1
+MajorVer=2
 MinorVer=0
 RevisionVer=0
 AutoIncrementVer=0
@@ -38,3 +37,7 @@ Unattended=0
 Retained=0
 ThreadPerObject=0
 MaxNumberOfThreads=1
+DebugStartupOption=0
+
+[MS Transaction Server]
+AutoRefresh=1

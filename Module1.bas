@@ -1,6 +1,6 @@
 Attribute VB_Name = "Module1"
 Option Explicit
-Public IP As String, UserName As String, PassWord As String, LevelID As Long, UserID As Long, UserNumber As String, BeginTime As String, SectionID As String, SubSectionID As String, UnitID As String
+Public IP As String, UserName As String, PassWord As String, LevelID As Long, UserID As Long, UserNumber As String, BeginTime As String, GetListeningProgressResult As String, SectionID As String, SubSectionID As String, UnitID As String
 Public mnScore As Integer, mnTime As Long, mxTime As Long
 Public P28(16) As Byte
 Public BASE124(256) As Long, BASE108(256) As Long, BASEEC(256) As Long, BASED0(256) As Long, BASE198(256) As Long, BASE140(256) As Long

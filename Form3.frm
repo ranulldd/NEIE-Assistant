@@ -2,16 +2,16 @@ VERSION 5.00
 Begin VB.Form Form3 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "…Ë÷√"
-   ClientHeight    =   1668
-   ClientLeft      =   36
+   ClientHeight    =   1665
+   ClientLeft      =   30
    ClientTop       =   360
-   ClientWidth     =   2964
+   ClientWidth     =   2970
    Icon            =   "Form3.frx":0000
    LinkTopic       =   "Form3"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   1668
-   ScaleWidth      =   2964
+   ScaleHeight     =   1665
+   ScaleWidth      =   2970
    ShowInTaskbar   =   0   'False
    StartUpPosition =   3  '¥∞ø⁄»± °
    Begin VB.CommandButton Command2 

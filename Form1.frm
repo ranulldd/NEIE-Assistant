@@ -3,14 +3,14 @@ Begin VB.Form Form1
    BorderStyle     =   1  'Fixed Single
    Caption         =   "NEIE Assistant"
    ClientHeight    =   2580
-   ClientLeft      =   36
+   ClientLeft      =   30
    ClientTop       =   360
-   ClientWidth     =   2916
+   ClientWidth     =   2925
    Icon            =   "Form1.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    ScaleHeight     =   2580
-   ScaleWidth      =   2916
+   ScaleWidth      =   2925
    StartUpPosition =   3  '窗口缺省
    Begin VB.Timer Timer1 
       Enabled         =   0   'False
@@ -84,7 +84,7 @@ Begin VB.Form Form1
       Caption         =   "Label5"
       BeginProperty Font 
          Name            =   "宋体"
-         Size            =   7.8
+         Size            =   7.5
          Charset         =   134
          Weight          =   400
          Underline       =   0   'False
@@ -206,7 +206,7 @@ Dim TmpStr As String
         GetStatus = "Unit" & TmpStr
     End If
     
-    GetStatus = GetStatus & "-" & Mid(pStr, 3)
+    GetStatus = GetSortID(pStr) & "-" & GetStatus & "-" & Mid(pStr, 3)
     
 End Function
 
@@ -308,10 +308,46 @@ Dim pStr As String
         PNeedEncode(1) = False
         pStr = SoapPost("GetListeningProgress", 2)
         
-        
+        GetListeningProgressResult = GetPara(pStr, "GetListeningProgressResult", False)
         SectionID = GetPara(pStr, "SectionID", False)
         SubSectionID = GetPara(pStr, "SubSectionID", False)
         UnitID = GetPara(pStr, "UnitID", False)
+        
+        If GetListeningProgressResult = "1" Then
+        
+            SectionID = GetNextSection(SectionID)
+            
+            If Mid(SectionID, 2, 1) <> UnitID Then  '刷完一个单元
+        
+                PName(0) = "UserID"
+                PVal(0) = UserID
+                PName(1) = "LevelID"
+                PVal(1) = LevelID
+                PName(2) = "UnitID"
+                PVal(2) = UnitID
+                PName(3) = "Status"
+                PVal(3) = "1"
+                PNeedEncode(0) = True
+                PNeedEncode(1) = True
+                PNeedEncode(2) = True
+                PNeedEncode(3) = True
+                SoapPost "SetListeningUnitLearnStaus", 4
+                
+                UnitID = Mid(SectionID, 2, 1)
+                
+                If SectionID = "已经刷完了！！！" Then
+                
+                    Label5.Caption = SectionID
+                
+                    Call UnLockAll
+                    
+                    Timer1.Enabled = False
+                    
+                    Exit Sub
+                End If
+                
+            End If
+        End If
         
         If SectionID = "" Then SectionID = LevelID & UnitID & "11"
         If SubSectionID = "" Then SubSectionID = "0"
@@ -319,12 +355,16 @@ Dim pStr As String
         pStr = SoapPost("GetServerTime", 0)
         BeginTime = GetPara(pStr, "GetServerTimeResult", False)
 
-        Label5.Caption = TimeCount & "秒后完成 " & GetStatus(SectionID)
-        
+
+    
         Timer1.Enabled = True
         
     End If
 
+End Sub
+
+Private Sub Text4_KeyPress(KeyAscii As Integer)
+    If KeyAscii = 13 Then Call Command1_Click
 End Sub
 
 Private Sub Timer1_Timer()

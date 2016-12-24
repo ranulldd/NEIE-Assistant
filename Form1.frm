@@ -349,6 +349,7 @@ Dim pStr As String
             End If
         End If
         
+        If UnitID = "" Then UnitID = "1"  '刷Unit1时获取的UnitID为"",导致错误,应改为"1"
         If SectionID = "" Then SectionID = LevelID & UnitID & "11"
         If SubSectionID = "" Then SubSectionID = "0"
         

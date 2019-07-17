@@ -5,5 +5,5 @@
 
 作者已经毕业多年，也不知道该项目还能不能用，反正后续不会维护了。
 
-不会VB的可以参考这个python版的项目：
+不会VB的可以参考这个Python版的项目：
 https://github.com/LiangYuxuan/NEIE-Assistant/
